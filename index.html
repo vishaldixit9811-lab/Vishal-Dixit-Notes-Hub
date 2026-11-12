@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dixit Notes Hub – BCA Study Material</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--navy:#D9480F;--navy2:#9A3412;--sky:#FF9F5A;--bg:#FFFFFF;--soft:#FFF4EC;--ink:#2A1608;--muted:#6B4E3A;--line:#F3D9C6;--card:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C0F06;--soft:#26150A;--ink:#FFF3EA;--muted:#E0BFA6;--line:#5A3418;--card:#2E1A0C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C0F06;--soft:#26150A;--ink:#FFF3EA;--muted:#E0BFA6;--line:#5A3418;--card:#2E1A0C;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:'Sora',system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hero{position:relative;background:radial-gradient(1200px 600px at 75% 40%,#FF8A3D 0%,var(--navy) 45%,var(--navy2) 100%);color:#fff;overflow:hidden;min-height:92vh;display:flex;flex-direction:column}
+#scene{position:absolute;inset:0;width:100%;height:100%}
+nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px}
+.logo{font-family:'Sora';font-weight:800;font-size:1.15rem;text-decoration:none;display:flex;gap:10px;align-items:center}
+.logo i{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--navy);display:grid;place-items:center;font-style:normal;font-size:.95rem}
+nav .links{display:flex;gap:22px;font-size:.95rem}
+nav .links a{text-decoration:none;opacity:.88}nav .links a:hover{opacity:1}
+.heroBody{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:30px 0 70px}
+.heroBody h1{font-size:clamp(2.3rem,6vw,4.4rem);font-weight:800;max-width:11ch;letter-spacing:-.02em}
+.heroBody p{max-width:46ch;font-size:1.1rem;color:#FFE6D2;margin:18px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;border-radius:12px;padding:13px 22px;font-weight:600;text-decoration:none;border:2px solid #fff;font-family:inherit;font-size:1rem;cursor:pointer}
+.btn.fill{background:#fff;color:var(--navy)}.btn.ghost{background:transparent;color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.stats b{font-family:'Sora';font-size:1.5rem;display:block}.stats span{font-size:.88rem;color:#FFE0C7}
+section{padding:72px 0}
+section h2{font-size:clamp(1.6rem,3.6vw,2.4rem);margin-bottom:10px}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 30px}
+.alt{background:var(--soft)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:600 .92rem 'Public Sans',sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{background:#fff;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{background:#fff;color:var(--navy)}}
+.search{width:100%;max-width:420px;padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:1rem 'Public Sans',sans-serif;margin:6px 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;perspective:900px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:22px;transition:transform .2s ease,box-shadow .2s ease;transform-style:preserve-3d;will-change:transform}
+.card:hover{box-shadow:0 18px 36px rgba(217,72,15,.22)}
+.card h3{font-size:1.1rem;margin-bottom:6px}.card p{margin:0 0 16px;color:var(--muted);font-size:.93rem}
+.card button{margin:0 8px 8px 0;background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 16px;font:600 .92rem 'Public Sans',sans-serif;cursor:pointer}
+:root[data-theme="dark"] .card button{background:#fff;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card button{background:#fff;color:var(--navy)}}
+.empty{color:var(--muted);padding:20px 0}
+.quiz{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:26px;max-width:720px}
+.quiz h3{font-size:1.2rem;margin:6px 0 16px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;margin:8px 0;font:1rem 'Public Sans',sans-serif;cursor:pointer}
+.opt.good{background:#DDF5E5;border-color:#1C8A4A;color:#0C4A26}.opt.bad{background:#FDE3E3;border-color:#C23B3B;color:#6B1414}
+.qmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}
+.code{background:#2A1608;color:#FFF1E6;border-radius:18px;padding:22px;font:.9rem/1.7 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;max-width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+@media(max-width:800px){.two{grid-template-columns:1fr}nav .links{display:none}.heroBody h1{max-width:none}}
+.syl{max-width:820px}.syl details{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 18px;margin:10px 0}.syl summary{cursor:pointer;font:700 1.05rem 'Sora',sans-serif}.syl h4{margin:14px 0 4px;font-family:'Sora',sans-serif;font-size:.98rem}.syl p{margin:0;color:var(--muted)}.syl ul,.syl ol{padding-left:20px;color:var(--muted);margin:6px 0}.syl .code-tag{display:inline-block;background:var(--navy);color:#fff;border-radius:8px;padding:3px 10px;font-weight:600;font-size:.88rem;margin:0 8px 6px 0}
+footer{background:#2A1608;color:#FFE0C7;padding:30px 0;font-size:.92rem}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:#fff;color:var(--navy);padding:12px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.25s;z-index:9;max-width:90vw;font-weight:600}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="wrap" style="display:flex;flex-direction:column;flex:1;position:relative">
+    <nav>
+      <a class="logo" href="#top"><i>DN</i>Dixit Notes Hub</a>
+      <div class="links"><a href="#library">Study library</a><a href="#mcq">MCQ practice</a><a href="#code">Programming</a><a href="#syllabus">Syllabus</a></div>
+    </nav>
+    <div class="heroBody" id="top"><div>
+      <h1>Study BCA without the scramble.</h1>
+      <p>Notes, important questions, MCQs, previous year papers and programming practice for all six BCA semesters, in one place.</p>
+      <div class="btns"><a class="btn fill" href="#library">Browse study material</a><a class="btn ghost" href="#mcq">Try an MCQ</a></div>
+      <div class="stats"><div><b>6</b><span>Semesters</span></div><div><b>5</b><span>Material types</span></div><div><b>1</b><span>Course: BCA</span></div></div>
+    </div></div>
+  </div>
+</header>
+
+<section id="library"><div class="wrap">
+  <h2>Study library</h2>
+  <p class="sub">Choose your semester and the kind of material you need. Subjects follow a common BCA pattern, so rename them to match your university syllabus.</p>
+  <div class="chips" id="sems" role="group" aria-label="Semester"></div>
+  <div class="chips" id="types" role="group" aria-label="Material type"></div>
+  <input class="search" id="q" type="search" placeholder="Search a subject, like Java or DBMS" aria-label="Search subjects">
+  <div class="grid" id="subjects"></div>
+</div></section>
+
+<section class="alt" id="mcq"><div class="wrap">
+  <h2>MCQ practice</h2>
+  <p class="sub">Pick an answer to see right away if it is correct.</p>
+  <div class="quiz" id="quiz"></div>
+</div></section>
+
+<section id="code"><div class="wrap two">
+  <div>
+    <h2>Programming materials</h2>
+    <p class="sub">Practice programs, lab files and short revision sheets for C, C++, Java, Python, SQL and web development.</p>
+    <div class="chips" id="langs" role="group" aria-label="Language"></div>
+  </div>
+  <pre class="code" id="snippet" aria-live="polite"></pre>
+</div></section>
+
+<section class="alt" id="syllabus"><div class="wrap">
+  <h2>Syllabus</h2>
+  <p class="sub">Semester 1 detailed syllabus. Choose a subject, then tap a unit to open it.</p>
+  <div class="chips" id="sylTabs" role="group" aria-label="Subject syllabus"></div>
+  <div class="syl" id="sylBox"></div>
+</div></section>
+
+<footer><div class="wrap">Dixit Notes Hub is made for BCA students only. Study smart, revise often.</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ---------- DATA: edit here to change subjects or add real file links ---------- */
+var SEMS={
+1:["Computer Fundamentals","C Programming","Principles of Management","Professional Communication","Basics of Mathematics"],
+2:["Data Structures using C","Discrete Mathematics","Computer Organization","Environmental Studies"],
+3:["Database Management System","OOP with C++","Operating Systems","Computer Networks"],
+4:["Java Programming","Web Technologies","Software Engineering","Computer Graphics"],
+5:["Python Programming","Artificial Intelligence","Cloud Computing","Cyber Security"],
+6:["Machine Learning","Advanced Web Development","Entrepreneurship","Major Project"]};
+var TYPES={"Notes":"Chapter-wise notes written for quick revision.","Important Questions":"Questions that come up again and again in exams.","MCQs":"Objective questions with answers.","Previous Year Papers":"Past exam papers to practice with."};
+var QUIZ=[
+["Which unit is called the brain of the computer?",["ALU","CPU","Monitor","RAM"],1],
+["Which symbol ends a statement in C?",["Colon","Period",";","Comma"],2],
+["Which data structure works on LIFO?",["Queue","Stack","Tree","Graph"],1],
+["What does SQL stand for?",["Structured Query Language","Simple Question Logic","Sequential Query Link","Stored Query List"],0],
+["Which keyword is used to inherit a class in Java?",["implements","inherits","extends","super"],2]];
+var LANGS={
+"C":'#include <stdio.h>\n\nint main() {\n  int n = 5, f = 1;\n  for (int i = 1; i <= n; i++) f *= i;\n  printf("Factorial = %d", f);\n  return 0;\n}',
+"C++":'#include <iostream>\nusing namespace std;\n\nclass Student {\n public:\n  string name;\n  void show() { cout << name; }\n};',
+"Java":'public class Main {\n  public static void main(String[] a) {\n    System.out.println("Hello, BCA!");\n  }\n}',
+"Python":'marks = [72, 85, 90]\naverage = sum(marks) / len(marks)\nprint("Average:", average)',
+"SQL":"SELECT name, marks\nFROM students\nWHERE marks > 75\nORDER BY marks DESC;",
+"HTML/JS":'<button onclick="alert(\'Hello BCA\')">\n  Click me\n</button>'};
+
+var sem=1,type="Notes",term="",$=function(i){return document.getElementById(i)};
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.x);toast.x=setTimeout(function(){t.classList.remove("on")},2600)}
+function chips(id,items,get,set,label){var box=$(id);box.innerHTML="";items.forEach(function(it){var b=document.createElement("button");b.className="chip";b.textContent=label(it);b.setAttribute("aria-pressed",String(get()==it));b.onclick=function(){set(it);chips(id,items,get,set,label)};box.appendChild(b)})}
+function drawSubjects(){
+  var g=$("subjects");g.innerHTML="";
+  var list=SEMS[sem].filter(function(s){return s.toLowerCase().indexOf(term)>-1});
+  if(!list.length){g.innerHTML='<p class="empty">No subject matches that search in Semester '+sem+'. Try another semester or clear the search.</p>';return}
+  list.forEach(function(s){
+    var c=document.createElement("div");c.className="card";
+    c.innerHTML="<h3></h3><p></p><button>Open "+type.toLowerCase()+"</button>";
+    c.querySelector("h3").textContent=s;c.querySelector("p").textContent=TYPES[type];
+    c.querySelector("button").onclick=function(){toast(s+" – "+type+" will be added soon.")};
+    var SI={"Computer Fundamentals":0,"C Programming":1,"Principles of Management":2,"Professional Communication":3,"Basics of Mathematics":4};if(SI[s]!==undefined){var sb=document.createElement("button");sb.textContent="View syllabus";sb.onclick=function(){showSyl(SI[s])};c.appendChild(sb)}
+    c.onmousemove=function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform="rotateY("+x*12+"deg) rotateX("+(-y*12)+"deg) translateZ(6px)"};
+    c.onmouseleave=function(){c.style.transform=""};
+    g.appendChild(c)})}
+function drawChips(){
+  chips("sems",[1,2,3,4,5,6],function(){return sem},function(v){sem=v;drawSubjects()},function(v){return "Semester "+v});
+  chips("types",Object.keys(TYPES),function(){return type},function(v){type=v;drawSubjects()},function(v){return v})}
+$("q").oninput=function(e){term=e.target.value.trim().toLowerCase();drawSubjects()};
+drawChips();drawSubjects();
+
+var SYL={code:"BCA1001T",name:"Computer Fundamentals & Problem-solving Techniques",ltpc:"3-1-0-4",
+co:["Describe the usage of computers and why computers are essential components in business and society.","Understand the concept of computer memory and input/output devices of computers and how it works and recognizes the basic terminology used in computer programming.","Demonstrate the use of Operating System commands. Understand the basic concepts of computational thinking, including sequential logic, abstractions and problem-solving techniques.","Possess the ability to design and develop programs to solve basic computational problems, develop algorithms and flowcharts. Explain the working of important application software and their use to perform any engineering activity.","Possess the ability to extend their knowledge towards learning behavior on windows operating system and hands-on training on MS Office Automation."],
+units:[
+["Unit I",[["Introduction to Computers","Introduction, Characteristics of Computers, Block diagram of computer, Generations and Classification. Types of computers and features, Mini Computers, Micro Computers, Mainframe Computers, Super Computers. Number Systems Introduction to Binary, Octal, Hexadecimal system Conversion, Binary Arithmetic Simple Addition, Subtraction, Multiplication."]]],
+["Unit II",[["Memory Organization","Introduction, Hierarchy, Primary Memory, Secondary memory, Cache memory, Virtual memory. Secondary Storage Devices: Introduction, Magnetic disk, Magnetic tape, Optical disks, Flash memory etc."],["Types of Programming Languages","Machine Languages, Assembly Languages, High Level Languages: Introduction, Compiler, Interpreter and Assembler."]]],
+["Unit III",[["Operating System","Definition, Functions, Types, Classification, Introduction of command based and GUI based operating system."],["Windows Operating System","Introduction, Elements, Use of menus, Tools and Commands."],["Computer Networks","Introduction, Types - LAN, WAN and MAN, Topologies, Data communication."]]],
+["Unit IV",[["Problem solving techniques","Understanding the problem, Analyzing the problem, Developing the solution."],["Algorithm and Flowcharts","Definition, Characteristics, Expressing Algorithms, Analysis of Algorithms, Advantages and disadvantages, Examples. Flowchart: Define symbols of flowchart, Limitations of using flowcharts, Advantages and disadvantages, Activities involved in Program Design, Coding and implementation."]]],
+["Unit V",[["Windows Operating Environment & Office Automation","Windows, Control Panel, Taskbar, Desktop, Windows Application, Icons, Windows Accessories, Notepad, Paintbrush, MS-Word, MS-Excel, MS-Access, MS-PowerPoint: Purpose, usage, command."]]]],
+books:["Fundamentals of Computers, V. Rajaraman, BPB Publications","Fundamentals of Computers, P. K. Sinha","Computer Today, Suresh Basandra","Unix Concepts and Application, Sumitabha Das","MS-Office 2000 (For Windows), Steve Sagman"]};
+var SYL2={code:"BCA1002T",name:"C Programming",ltpc:"3-1-0-4",
+co:["Able to understand the fundamentals of C programming with its control structures.","Able to implement the concepts of arrays and functions using C programming.","Able to design and develop structure programming problems using C programming concepts.","Able to implement advance C programming concepts using pointers.","Able to understand the concept of dynamic memory allocation and file handling using C Programming."],
+units:[
+["Unit I",[["Fundamentals of C programming and Control Structures","History, Structure of a C program, C Conventions, Character Set, Identifiers, Keywords, Simple Data types, Modifiers, Variables, Constants, Operators, Operator precedence. Input and output operation: Single character input and output. Control Structures, Conditional statement and switch statement. Looping statement, break and continue, nested for statement."]]],
+["Unit II",[["Arrays","Introduction, Declaration of arrays, Initialization of arrays, processing with arrays, String manipulation, declaration of string arrays, string operations."],["Functions","Introduction, advantages of functions, Function definition, function call, Actual and formal arguments, local and global variables, function prototypes, types of functions, recursive functions."]]],
+["Unit III",[["Structures","Introduction, Advantages of structures, accessing elements of a structure, nested structures, array of structures."],["Storage classes","Introduction, Types - automatic, register, static and external."]]],
+["Unit IV",[["Pointers","Introduction, Characteristics, * and & operators, Pointer type declaration and assignment, Pointer arithmetic, Call by reference, accessing array using pointers, Passing pointers to functions, Pointer to pointer."]]],
+["Unit V",[["Dynamic Memory Allocation","Introduction, Library functions - malloc, calloc, realloc and free."],["File Handling","Basics, File types, File operations, File pointer, File opening modes, File handling functions, File handling through command line argument, Record I/O in files."]]]],
+books:[]};
+var SYL3={code:"BCA1003T",name:"Principles of Management",ltpc:"3-0-0-3",
+co:["Understand the concepts related to business.","Define Management and demonstrate the roles, skills and levels of management.","Describe major management theories, business ethics and social responsibility in the context of management.","To analyze and discuss planning, organizing, controlling, decision making, motivation, leadership, management of change.","Develop theoretical and critical thinking skills relevant to both academic and management practices."],
+units:[
+["Unit I",[["Nature of Management","Meaning, Definition, Scope, importance & Characteristics of Management, Management as Art, Science & Profession, Management Vs Administration, Management Skills, Levels of Management."]]],
+["Unit II",[["Evolution of Management Thought","Contribution of F.W. Taylor, Henri Fayol, & Peter Drucker to the management thought. Business Ethics, Social Responsibility of business."]]],
+["Unit III",[["Functions of Management: Part-I","Planning: Meaning, Need & Importance, types, Process of Planning, limitations of Planning. Concept of Decision making, Types, Process of decision making."],["Organizing","Concept of organizing & processes: Types of Organization, Delegation of authority, Centralization and Decentralization."],["Staffing","Meaning & Importance."]]],
+["Unit IV",[["Functions of Management: Part-II","Direction: Nature, Principles, Motivation, Importance, theories of Motivation. Leadership: Meaning, styles, qualities & function of leader. Controlling: Need, Nature, Importance, Process of Controlling. Coordination: Concept & types of Coordination."]]],
+["Unit V",[["Management of Change","Meaning, Features of change, Force for Change, Models for Change, Resistance to change, overcoming resistance to change, Stress Management."]]]],
+books:[]};
+var SYL4={code:"BCA1004T",name:"Professional Communication",ltpc:"2-0-0-2",
+co:["Develop the knowledge of basic concepts and elements of communication and professional communication.","Assess the importance of effective communication in a professional career.","Enhance oral communication skills by learning Reading, Listening and Speaking skills.","Enhance effective Writing Skills by introducing business correspondence through Letters, Reports, and Resume writing.","Understand the models of professional communication and its implications in presentation skills."],
+units:[
+["Unit I",[["Basics of Professional Communication","Meaning, Definition and Importance of Professional Communication; Difference between General and Professional communication, Process of Communication and Barriers in Communication, Levels of Communication - formal/informal, internal/external, intrapersonal/extrapersonal, Interpersonal, Mass, Grapevine."]]],
+["Unit II",[["Oral Communication skills","Techniques of effective oral communication skills, 7C’s of Communication, Common errors in speaking, Debates, Group Discussions and Speeches, Reading skills and Listening skills."]]],
+["Unit III",[["Written Communication","Principles of Effective Writing and Business Correspondence, Letters; Layout and formats of business letters, Sales letter (persuasive and negotiation), Inquiry letters, complaint letters, Emails, Job Application and Resume writing, Report writing; Purpose, Types of report writing, Structure of reports."]]],
+["Unit IV",[["Presentation skills","Planning, Strategies and Organization of presentations, nuances of delivery, Preparing Effective Power Point Presentations, PPT, Nonverbal communication skills - Body language, Paralanguage, Posture and Gesture, Eye contact."]]]],
+books:["Business Communication, K. K. Sinha, Galgotia Publishing Company, New Delhi.","Technical Communication (Principles and Practice), Meenakshi Raman and Sangeeta Sharma, Oxford University Press, New Delhi, New York","Professional Communication, Malti Agarwal, Krishna Prakashan","Essentials of Business Communication, Rajendra Pal and J.S. Korlhalli, Sultan Chand & Sons, New Delhi.","Business Communication (Principles, Methods and Techniques), Nirmal Singh, Deep & Deep Publications Pvt. Ltd., New Delhi."]};
+var SYL5={code:"BCA1005T",name:"Basics of Mathematics",ltpc:"3-0-0-3",
+co:["Find out matrix representation of various type of problems.","Apply the concepts of limit, continuity and differentiability in different science fields.","Apply Taylor’s and Maclaurin’s theorem to find the expansion of functions as infinite series.","Evaluate the integrals of complex functions and to find area, volume.","Apply the concept of vector algebra, scalar triple product, vector triple product."],
+units:[
+["Unit I",[["Matrices and Determinants","Matrix, Types of matrices, Addition, subtraction, scalar multiplication of a matrix, product of two matrices, Determinants of a square matrix, Co-factor of element of a square matrix, Adjoint of a square matrix, Inverse of a Square Matrix, Cayley Hamilton theorem (statement only) and problems."]]],
+["Unit II",[["Limits and Continuity","Limit at a Point, Properties of Limit, Computation of Limits of Various Types of functions, Indeterminate Forms, L’ Hospital’s Rule, Continuity at a Point, Continuity Over an Interval."]]],
+["Unit III",[["Differentiation","Derivatives of Sum, Differences, Product & Quotients, Chain Rule, Derivatives of Composite Functions, Logarithmic Differentiation, Rolle’s Theorem, Mean Value Theorem, Maxima & Minima. Taylor’s and Maclaurin’s Theorem."]]],
+["Unit IV",[["Integration","Fundamental Theorem of Calculus (without proof), Indefinite Integrals, Methods of Integration Substitution, By Parts, Partial Fractions."]]],
+["Unit V",[["Vector Algebra","Definition of a vector in 2 and 3 Dimensions; Double and Triple Scalar and Vector Product."]]]],
+books:["Elementary Engineering Mathematics, B.S. Grewal, Khanna Publishers, 15th Edition, 2015.","Advanced Engineering Mathematics, H. K. Dass, S. Chand & Company, 22nd Revised Ed. 2018.","Integral Calculus, Shanti Narayan, S. Chand & Company, 1999.","Differential Calculus, Shanti Narayan, S. Chand & Company, 1998."]};
+var SYLS=[SYL,SYL2,SYL3,SYL4,SYL5],sylSel=SYL;
+function el(t,x){var e=document.createElement(t);if(x)e.textContent=x;return e}
+function drawSyl(SYL){var b=$("sylBox");b.innerHTML="";var h=el("h3",SYL.name);b.appendChild(h);
+  var tags=el("p");tags.innerHTML='<span class="code-tag"></span><span class="code-tag"></span>';tags.children[0].textContent="Course code: "+SYL.code;tags.children[1].textContent="L-T-P-C: "+SYL.ltpc;b.appendChild(tags);
+  var d=el("details");d.appendChild(el("summary","Course outcomes"));var ul=el("ul");
+  SYL.co.forEach(function(c,i){ul.appendChild(el("li","CO"+(i+1)+": "+c))});d.appendChild(ul);b.appendChild(d);
+  SYL.units.forEach(function(u,i){var x=el("details");if(i===0)x.open=true;x.appendChild(el("summary",u[0]));
+    u[1].forEach(function(t){x.appendChild(el("h4",t[0]));x.appendChild(el("p",t[1]))});b.appendChild(x)});
+  if(SYL.books&&SYL.books.length){var bk=el("details");bk.appendChild(el("summary","Text and reference books"));var ol=el("ol");
+  SYL.books.forEach(function(t){ol.appendChild(el("li",t))});bk.appendChild(ol);b.appendChild(bk)}
+}
+function drawSylTabs(){chips("sylTabs",SYLS,function(){return sylSel},function(v){sylSel=v;drawSyl(v)},function(v){return v.name})}
+function showSyl(i){sylSel=SYLS[i];drawSyl(sylSel);drawSylTabs();$("syllabus").scrollIntoView({behavior:"smooth"})}
+drawSyl(sylSel);drawSylTabs();
+
+var qi=0,score=0;
+function drawQuiz(){
+  var q=$("quiz");
+  if(qi>=QUIZ.length){q.innerHTML="<h3>You scored "+score+" out of "+QUIZ.length+"</h3><button class='btn fill' style='border-color:var(--navy);background:var(--navy);color:#fff' id='again'>Practice again</button>";$("again").onclick=function(){qi=0;score=0;drawQuiz()};return}
+  var d=QUIZ[qi];
+  q.innerHTML="<div class='qmeta'><span>Question "+(qi+1)+" of "+QUIZ.length+"</span><span>Score "+score+"</span></div><h3></h3><div id='opts'></div>";
+  q.querySelector("h3").textContent=d[0];
+  var done=false;
+  d[1].forEach(function(o,i){var b=document.createElement("button");b.className="opt";b.textContent=o;
+    b.onclick=function(){if(done)return;done=true;var all=q.querySelectorAll(".opt");
+      all[d[2]].classList.add("good");if(i==d[2])score++;else b.classList.add("bad");
+      setTimeout(function(){qi++;drawQuiz()},1100)};
+    $("opts").appendChild(b)})}
+drawQuiz();
+
+var lang="C";
+chips("langs",Object.keys(LANGS),function(){return lang},function(v){lang=v;$("snippet").textContent=LANGS[v]},function(v){return v});
+$("snippet").textContent=LANGS[lang];
+
+/* ---------- 3D hero scene ---------- */
+(function(){
+  if(typeof THREE==="undefined")return;
+  var cv=$("scene"),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  var S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,100);C.position.set(0,0,9);
+  S.add(new THREE.AmbientLight(0xffffff,.65));
+  var L=new THREE.DirectionalLight(0xffffff,1);L.position.set(4,6,6);S.add(L);
+  var G=new THREE.Group();S.add(G);
+  var cols=[0xffffff,0xFFB27A,0xFFE3CF,0xFF7A1A,0xffffff],books=[];
+  for(var i=0;i<5;i++){
+    var m=new THREE.Mesh(new THREE.BoxGeometry(3.2-i*.18,.5,2.3-i*.1),new THREE.MeshStandardMaterial({color:cols[i],roughness:.35,metalness:.15}));
+    m.position.set(Math.sin(i*1.7)*.25,i*.62-1.3,0);m.rotation.y=i*.5;G.add(m);books.push(m)}
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(3.1,.03,12,120),new THREE.MeshBasicMaterial({color:0xFFC49A}));ring.rotation.x=1.2;G.add(ring);
+  var ring2=ring.clone();ring2.scale.set(1.3,1.3,1.3);ring2.rotation.set(1.9,.4,0);G.add(ring2);
+  var pg=new THREE.BufferGeometry(),n=380,p=new Float32Array(n*3);
+  for(var k=0;k<n*3;k++)p[k]=(Math.random()-.5)*20;
+  pg.setAttribute("position",new THREE.BufferAttribute(p,3));
+  var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xFFD9BD,size:.04}));S.add(pts);
+  var mx=0,my=0,still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+  function size(){var w=cv.clientWidth,h=cv.clientHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix();G.position.x=w>800?3.2:0;G.position.y=w>800?0:-1.6;G.scale.setScalar(w>800?1:.7)}
+  addEventListener("resize",size);size();
+  var t=0;
+  (function loop(){
+    if(!still)t+=.01;
+    G.rotation.y=t*.6+mx*1.2;G.rotation.x=.25+my*.4;
+    books.forEach(function(b,i){b.position.y=i*.62-1.3+Math.sin(t*2+i)*.05});
+    ring.rotation.z=t;ring2.rotation.z=-t*.7;pts.rotation.y=t*.1;
+    R.render(S,C);requestAnimationFrame(loop)})();
+})();
+</script>
+</body>
+</html>
